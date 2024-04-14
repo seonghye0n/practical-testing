@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import sample.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import sample.cafekiosk.spring.api.service.product.ProductService;
+import sample.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import sample.cafekiosk.spring.api.service.product.response.ProductResponse;
 
 @ActiveProfiles("test")
@@ -38,7 +38,7 @@ public class ProductServiceTest {
 		Product product1 = createProduct("001", HANDMADE, "아메리카노", 4000, SELLING);
 		productRepository.save(product1);
 
-		ProductCreateRequest request = ProductCreateRequest.builder()
+		ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
 			.name("카푸치노")
 			.price(5000)
 			.sellingStatus(SELLING)
@@ -67,7 +67,7 @@ public class ProductServiceTest {
 	void createProductWhenProductIsEmpty() {
 		//given
 
-		ProductCreateRequest request = ProductCreateRequest.builder()
+		ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
 			.name("카푸치노")
 			.price(5000)
 			.sellingStatus(SELLING)
