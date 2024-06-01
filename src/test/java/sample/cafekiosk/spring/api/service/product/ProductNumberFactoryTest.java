@@ -1,6 +1,7 @@
 package sample.cafekiosk.spring.api.service.product;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ class ProductNumberFactoryTest {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+	@AfterEach
+	void tearDown() {
+		productRepository.deleteAllInBatch();
+	}
 
 	@DisplayName("상품이 없다면 상품번호는 001부터 시작한다.")
 	@Test
